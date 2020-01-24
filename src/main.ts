@@ -16,7 +16,7 @@ client.on("message", async (message: Discord.Message) => {
     if (message.author.bot) return;
     if (message.content === "!toggle") akhat = !akhat;
     else if (message.content === "!roast") {
-        const choice = Math.floor(Math.random() * 11) + 1;
+        const choice = Math.floor(Math.random() * 8) + 1;
         switch(choice) {
             case 1:
                 await message.channel.send("Stfu u dumb ass harvard sweatshirt wearin ass too retarded to go to harvard lookin ass");
@@ -50,11 +50,11 @@ client.on("message", async (message: Discord.Message) => {
                 break;
         }	
     }
-    else if(message.content.match(/[aou]/gi)) {
+    else if(akhat && !message.content.startsWith("!") && message.content.match(/[aou]/gi)) {
         const msg = message.content
             .replace(/a/gi, "ä")
             .replace(/o/gi, "ö")
             .replace(/u/gi, "ü");
-        await message.channel.send("Oh my, did you maybe mean:\n" + msg);
+        await message.channel.send("Oh my, did you maybe mean: " + msg);
     }
 })
